@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pankaj Bhardwaj - Stock & Forex Analysis</title>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1140128422203321');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1140128422203321&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:linear-gradient(135deg,#0b0625,#1a0b3d 50%,#0a0a2a);color:#fff;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(circle at 15% 15%,rgba(138,43,226,.22),transparent 40%),radial-gradient(circle at 85% 85%,rgba(255,193,7,.12),transparent 40%);z-index:-1;animation:bgPulse 9s ease-in-out infinite}
+@keyframes bgPulse{0%,100%{opacity:.55}50%{opacity:1}}
+
+/* Ticker */
+.ticker{background:rgba(0,0,0,.65);border-bottom:1px solid rgba(255,193,7,.35);padding:9px 0;overflow:hidden;white-space:nowrap}
+.ticker-track{display:inline-block;animation:scroll 35s linear infinite}
+.ticker-track span{display:inline-flex;gap:6px;margin:0 28px;font-size:.85rem;font-weight:600}
+.ticker-track .up{color:#00e676}.ticker-track .down{color:#ff5252}.ticker-track .live{color:#ff1744;font-weight:800}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* Header */
+header{display:flex;align-items:center;justify-content:center;padding:18px;gap:14px;border-bottom:1px solid rgba(138,43,226,.25);background:rgba(11,6,37,.85);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100}
+header img{width:60px;height:60px;border-radius:50%;border:3px solid #ffc107;object-fit:cover;animation:glow 3s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 20px rgba(255,193,7,.55)}50%{box-shadow:0 0 38px rgba(255,193,7,.95)}}
+header h1{font-size:1.55rem;font-weight:800;background:linear-gradient(90deg,#ffc107,#b06cff,#00e5ff,#ffc107);background-size:250% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 4s linear infinite}
+@keyframes shine{to{background-position:250% center}}
+
+/* Hero */
+.hero{text-align:center;padding:45px 20px 20px;max-width:850px;margin:0 auto}
+.badge{display:inline-block;padding:7px 18px;background:rgba(255,193,7,.12);border:1px solid rgba(255,193,7,.55);border-radius:50px;font-size:.78rem;color:#ffc107;margin-bottom:18px;font-weight:700;letter-spacing:1px}
+.hero h2{font-size:2.4rem;font-weight:900;line-height:1.2;margin-bottom:14px;background:linear-gradient(135deg,#fff,#b06cff 50%,#ffc107);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.02rem;color:#c4c1d8;line-height:1.6}
+
+/* Live Section */
+.live-section{max-width:960px;margin:30px auto;padding:0 18px}
+.live-header{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.dot{width:11px;height:11px;background:#ff1744;border-radius:50%;box-shadow:0 0 14px #ff1744;animation:pulse 1.2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.6}}
+.live-header h3{font-size:1.2rem}.live-header h3 span{color:#ff5252}
+.live-header .forex-span{color:#00e5ff}
+.clock{font-size:.8rem;color:#00e5ff;font-weight:700;background:rgba(0,229,255,.1);padding:5px 12px;border-radius:30px;border:1px solid rgba(0,229,255,.4)}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.card{background:rgba(255,255,255,.045);border:1px solid rgba(138,43,226,.35);border-radius:14px;padding:18px;backdrop-filter:blur(8px);transition:.3s}
+.card:hover{transform:translateY(-4px);border-color:rgba(255,193,7,.65);box-shadow:0 8px 25px rgba(138,43,226,.25)}
+.card .name{font-size:.85rem;color:#b4b0d0;margin-bottom:6px;font-weight:600}
+.card .price{font-size:1.4rem;font-weight:800;margin-bottom:4px}
+.card .change{font-size:.85rem;font-weight:700}
+.up{color:#00e676}.down{color:#ff5252}
+.forex .card{border-color:rgba(0,229,255,.35)}
+.forex .card:hover{border-color:rgba(0,229,255,.75);box-shadow:0 8px 25px rgba(0,229,255,.22)}
+
+/* Buttons */
+.buttons{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:35px auto 40px;padding:0 18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;flex:1 1 280px;max-width:380px;padding:18px 30px;font-size:1.05rem;font-weight:800;text-decoration:none;border-radius:60px;color:#fff;position:relative;overflow:hidden}
+.btn.purple{background:linear-gradient(135deg,#8a2be2,#00c8ff);animation:blinkP 1.4s ease-in-out infinite}
+.btn.gold{background:linear-gradient(135deg,#ffc107,#ff6f00);color:#1a0b3d;animation:blinkG 1.4s ease-in-out infinite;animation-delay:.7s}
+@keyframes blinkP{0%,100%{transform:scale(1);box-shadow:0 8px 28px rgba(138,43,226,.55)}50%{transform:scale(1.05);box-shadow:0 8px 50px rgba(138,43,226,1)}}
+@keyframes blinkG{0%,100%{transform:scale(1);box-shadow:0 8px 28px rgba(255,193,7,.55)}50%{transform:scale(1.05);box-shadow:0 8px 50px rgba(255,193,7,1)}}
+.btn:hover{transform:scale(1.08)!important;animation-play-state:paused}
+.btn svg{width:24px;height:24px;flex-shrink:0}
+.btn::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);animation:sweep 2s infinite}
+@keyframes sweep{0%{left:-100%}60%,100%{left:100%}}
+
+/* Footer */
+footer{text-align:center;padding:22px 18px;border-top:1px solid rgba(138,43,226,.2);color:#7d7894;font-size:.8rem;line-height:1.7}
+.disclaimer{max-width:780px;margin:10px auto 0;font-size:.72rem;color:#5f5a75}
+
+@media(max-width:768px){
+header h1{font-size:1.15rem}header img{width:50px;height:50px}
+.hero h2{font-size:1.75rem}.hero p{font-size:.92rem}.hero{padding:35px 18px 15px}
+.buttons{flex-direction:column;gap:14px}.btn{width:100%;max-width:100%;flex:1 1 auto;font-size:.98rem;padding:16px 24px}
+.card .price{font-size:1.25rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Ticker -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="live">🔴 LIVE</span>
+    <span>NIFTY <b class="up">24,912 ▲ +142</b></span>
+    <span>BANK NIFTY <b class="up">53,580 ▲ +285</b></span>
+    <span>SENSEX <b class="up">81,780 ▲ +395</b></span>
+    <span>EUR/USD <b class="up">1.0875 ▲ +0.0024</b></span>
+    <span>GBP/USD <b class="down">1.2630 ▼ -0.0018</b></span>
+    <span>USD/JPY <b class="up">151.42 ▲ +0.38</b></span>
+    <span>GOLD <b class="up">2,385 ▲ +12</b></span>
+    <span class="live">🔴 LIVE</span>
+    <span>NIFTY <b class="up">24,912 ▲ +142</b></span>
+    <span>BANK NIFTY <b class="up">53,580 ▲ +285</b></span>
+    <span>SENSEX <b class="up">81,780 ▲ +395</b></span>
+    <span>EUR/USD <b class="up">1.0875 ▲ +0.0024</b></span>
+    <span>GBP/USD <b class="down">1.2630 ▼ -0.0018</b></span>
+    <span>USD/JPY <b class="up">151.42 ▲ +0.38</b></span>
+    <span>GOLD <b class="up">2,385 ▲ +12</b></span>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <img src="https://karanmetalabe.com/wp-content/uploads/2025/11/download-9.jpg" alt="Pankaj Bhardwaj">
+  <h1>Pankaj Bhardwaj</h1>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <span class="badge">🏆 TRUSTED STOCK & FOREX MENTOR</span>
+  <h2>Learn Stock & Forex Market With Pankaj Bhardwaj</h2>
+  <p>Join our free Telegram channel for daily market analysis, expert trading strategies, intraday & forex calls, and real-time insights.</p>
+</section>
+
+<!-- Live Stock Market -->
+<section class="live-section">
+  <div class="live-header">
+    <span class="dot"></span>
+    <h3>LIVE <span>STOCK MARKET</span></h3>
+    <span class="clock" id="clock">--:--:--</span>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="name">NIFTY 50</div><div class="price">24,912.60</div><div class="change up">▲ +142.10 (+0.57%)</div></div>
+    <div class="card"><div class="name">BANK NIFTY</div><div class="price">53,580.40</div><div class="change up">▲ +285.65 (+0.54%)</div></div>
+    <div class="card"><div class="name">SENSEX</div><div class="price">81,780.50</div><div class="change up">▲ +395.20 (+0.49%)</div></div>
+    <div class="card"><div class="name">RELIANCE</div><div class="price">2,938.60</div><div class="change down">▼ -15.40 (-0.52%)</div></div>
+  </div>
+</section>
+
+<!-- Live Forex Market -->
+<section class="live-section forex">
+  <div class="live-header">
+    <span class="dot"></span>
+    <h3><span class="forex-span">LIVE FOREX MARKET</span></h3>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="name">EUR / USD</div><div class="price">1.0875</div><div class="change up">▲ +0.0024 (+0.22%)</div></div>
+    <div class="card"><div class="name">GBP / USD</div><div class="price">1.2630</div><div class="change down">▼ -0.0018 (-0.14%)</div></div>
+    <div class="card"><div class="name">USD / JPY</div><div class="price">151.42</div><div class="change up">▲ +0.38 (+0.25%)</div></div>
+    <div class="card"><div class="name">GOLD (XAU/USD)</div><div class="price">2,385.50</div><div class="change up">▲ +12.40 (+0.52%)</div></div>
+  </div>
+</section>
+
+<!-- 2 Join Buttons -->
+<div class="buttons">
+  <a href="https://t.me/+NXzSAW1Mh7Q2MjBl" target="_blank" rel="noopener" class="btn purple">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+    JOIN TELEGRAM
+  </a>
+  <a href="https://t.me/+NXzSAW1Mh7Q2MjBl" target="_blank" rel="noopener" class="btn gold">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+    🚀 FREE JOIN NOW
+  </a>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>© 2026 Pankaj Bhardwaj. All Rights Reserved.</p>
+  <p class="disclaimer">⚠️ Disclaimer: Stock market & forex investments are subject to market risks. We are an educational community, not financial advisors. Please trade responsibly.</p>
+</footer>
+
+<script>
+function tick(){
+  const t=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Kolkata'}));
+  document.getElementById('clock').textContent=String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0')+':'+String(t.getSeconds()).padStart(2,'0')+' IST';
+}
+tick();setInterval(tick,1000);
+</script>
+
+</body>
+</html>
